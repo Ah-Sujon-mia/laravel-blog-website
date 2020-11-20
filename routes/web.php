@@ -29,9 +29,9 @@ Route::post('contact-form', 'Frontend\FrontendController@contatStore')->name('co
 
  
 // Admin Route
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
+Route::group(['prefix' => 'admin', 'middleware' => ['auth','admin']], function()
 {
-    Route::get('dashboard', 'HomeController@index')->name('admin.dashboard');
+    Route::get('dashboard', 'DashboardController@index')->name('admin.dashboard');
 	Route::resource('category', 'CategoryController');
     Route::resource('tags', 'TagController');
     Route::resource('posts', 'PostController');
@@ -45,5 +45,12 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
     Route::get('contact/show/{id}', 'ContactController@contactshow')->name('contact.show');
     Route::get('setting', 'SettingController@setting')->name('setting.index');
     Route::post('setting/store/{id}', 'SettingController@store')->name('setting.store');
+
+});
+
+// User Route 
+Route::group(['prefix' => 'User', 'middleware' => ['auth','user']], function()
+{
+    Route::get('author/dashboard', 'DashboardController@author')->name('author.dashboard');
 
 });

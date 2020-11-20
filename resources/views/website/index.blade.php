@@ -175,7 +175,7 @@
 
     </div>
 </div>
-
+{{--  
 
 <div class="site-section bg-lightx">
     <div class="container">
@@ -193,5 +193,5 @@
             </div>
         </div>
     </div>
-</div>
+</div>  --}}
 @endsection
